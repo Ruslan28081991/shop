@@ -3,6 +3,7 @@ export class Component extends HTMLElement {
     super();
     this.props = {};
     this.state = {};
+    // this.isShadow = false;
   }
 
   setState(callback) {

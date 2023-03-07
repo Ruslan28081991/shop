@@ -1,4 +1,4 @@
-import { Component } from '../../../core/Components';
+import { Component } from '../../../core/Component';
 
 class ContactsPage extends Component {
   render() {

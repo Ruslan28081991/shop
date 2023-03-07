@@ -1,4 +1,4 @@
-import { Component } from '../../../core/Components';
+import { Component } from '../../../core/Component';
 import '../../organism/Navigation';
 import '../../molecules/MenuItems';
 import { appCategories } from '../../../constants/appCategories';

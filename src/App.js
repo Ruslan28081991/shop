@@ -1,4 +1,4 @@
-import { Component } from './core/Components';
+import { Component } from './core/Component';
 import './components/templates/Header';
 import { routes } from './constants/routes';
 import './components/pages/BlogPage';
@@ -37,7 +37,7 @@ customElements.define('it-app', App);
 //     };
 //   }
 
-//   increaseCount() {
+//   increaseCount = () => {
 //     this.setState((state) => {
 //       return {
 //         count: state.count < 10 ? state.count + 1 : state.count,
@@ -45,7 +45,7 @@ customElements.define('it-app', App);
 //     });
 //   }
 
-//   decreaseCount() {
+//   decreaseCount = () => {
 //     this.setState((state) => {
 //       return {
 //         count: state.count ? state.count - 1 : state.count,
@@ -61,6 +61,15 @@ customElements.define('it-app', App);
 //       this.decreaseCount();
 //     }
 //   };
+
+// connectedCallback() {
+//   this.innetHTML = this.render();
+//   this.addEventListener('click', this.onClick);
+// }
+
+// disconnectedCallback() {
+//   this.removeEventListener('click', this.onclick)
+// }
 
 //   componentDidMount() {
 //     this.addEventListener('click', this.onClick);

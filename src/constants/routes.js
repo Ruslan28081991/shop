@@ -10,8 +10,8 @@ export const routes = [
     component: '<contacts-page></contacts-page>',
   },
   {
-    href: APP_ROUTES.card,
-    component: '<card-page></card-page>',
+    href: APP_ROUTES.cart,
+    component: '<cart-page></cart-page>',
   },
   {
     href: APP_ROUTES.blog,

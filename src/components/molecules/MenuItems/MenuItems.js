@@ -1,4 +1,4 @@
-import { Component } from '../../../core/Components';
+import { Component } from '../../../core/Component';
 
 class MenuItems extends Component {
   static get observedAttributes() {
