@@ -1,12 +1,14 @@
 import { Component } from './core/Component';
-import './components/templates/Header';
 import { routes } from './constants/routes';
+import { appCategories } from './constants/appCategories';
+import './components/templates/Header';
 import './components/pages/BlogPage';
 import './components/pages/CartPage';
 import './components/pages/CatalogPage';
 import './components/pages/ProductPage';
 import './components/pages/ErrorPage';
 import './components/pages/ContactsPage';
+import './components/molecules/Footer';
 
 class App extends Component {
   render() {
@@ -14,14 +16,14 @@ class App extends Component {
 
     return `
         <div class="main-layout">
-          <it-header></it-header>
+          <it-header categories='${JSON.stringify(appCategories)}'></it-header>
           <main>
-            <hr class="dropdown-divider" />
-            ${
-              routes.find((route) => route.href === pathname)?.component ??
-              '<error-page></error-page>'
-            }
+              ${
+                routes.find((route) => route.href === pathname)?.component ??
+                '<error-page></error-page>'
+              }
           </main>
+          <it-footer></it-footer>
         </div>
         `;
   }

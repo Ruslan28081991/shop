@@ -1,11 +1,11 @@
 import { Component } from '../../../core/Component';
 
-class CardPage extends Component {
+class CartPage extends Component {
   render() {
     return `
-            <h1>CardPage</h1>
+            <h1>CartPage</h1>
         `;
   }
 }
 
-customElements.define('card-page', CardPage);
+customElements.define('cart-page', CartPage);

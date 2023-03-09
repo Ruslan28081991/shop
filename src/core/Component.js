@@ -20,7 +20,7 @@ export class Component extends HTMLElement {
     this.componentWilUnmount();
   }
 
-  attributeChangeCallback(name, oldValue, newValue) {
+  attributeChangedCallback(name, oldValue, newValue) {
     this.componentWilUpdate(name, oldValue, newValue);
     this.getAttributeNames().forEach((name) => {
       this.props[name] = this.getAttribute(name);
@@ -28,7 +28,7 @@ export class Component extends HTMLElement {
   }
 
   // dispatch(type, props) {
-  //   this.dispatchEvent(new CustomEvent(type, { bubbles: true, detail: pro}))
+  //   this.dispatchEvent(new CustomEvent(type, { bubbles: true, detail: props }));
   // }
 
   componentDidMount() {}
