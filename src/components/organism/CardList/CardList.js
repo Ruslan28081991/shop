@@ -10,8 +10,9 @@ class CardList extends Component {
     const products = JSON.parse(this.props.products);
     return `
         <div class="row">
-            ${products.map((item) => {
-              return `
+            ${products
+              .map((item) => {
+                return `
                     <div class="col-sm-3 mb-3">
                         <it-card
                             image='${item.images[0]}'
@@ -21,7 +22,8 @@ class CardList extends Component {
                         ></it-card>
                     </div>
                 `;
-            })}
+              })
+              .join(' ')}
         </div>
         `;
   }
