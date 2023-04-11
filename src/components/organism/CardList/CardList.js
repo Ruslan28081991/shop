@@ -6,7 +6,6 @@ class CardList extends Component {
     return ['products'];
   }
   render() {
-    console.log(this.props.products);
     const products = JSON.parse(this.props.products);
     return `
         <div class="row">
@@ -19,6 +18,7 @@ class CardList extends Component {
                             title='${item.title}'
                             price='${item.price}'
                             description='${item.description}'
+                            id='${item.id}'
                         ></it-card>
                     </div>
                 `;

@@ -1,9 +1,26 @@
+import { APP_STORAGE_KEYS } from '../../../constants/appStorageKeys';
 import { Component } from '../../../core/Component';
+import { storageService } from '../../../services/StorageService';
 import './Card.scss';
 
 class Card extends Component {
   static get observedAttributes() {
-    return ['image', 'title', 'description', 'price'];
+    return ['image', 'title', 'description', 'price', 'id'];
+  }
+
+  addToCard = (evt) => {
+    if (evt.target.closest('.btn')) {
+      const allItems = storageService.getItem(APP_STORAGE_KEYS.cartData) ?? [];
+      storageService.setItem(APP_STORAGE_KEYS.cartData, [...allItems, this.props]);
+    }
+  };
+
+  componentDidMount() {
+    this.addEventListener('click', this.addToCard);
+  }
+
+  componentWilUnmount() {
+    this.removeEventListener('click', this.addToCard);
   }
 
   render() {
