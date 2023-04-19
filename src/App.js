@@ -11,12 +11,70 @@ import './components/pages/ContactsPage';
 import './components/molecules/Footer';
 import './components/organism/Navigation';
 import './components/pages/AdminPage/AdminPage';
+import './components/pages/SignUpPage';
+import './components/pages/SignInPage';
+import './components/molecules/Preloader';
+import { authService } from './services/Auth';
+import { eventEmmiter } from './core/EventEmmiter';
+import { APP_EVENTS } from './constants/AppEvents';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoading: false,
+      user: null,
+    };
+  }
+
+  setUser(user) {
+    this.setState((state) => {
+      return {
+        ...state,
+        user,
+      };
+    });
+  }
+
+  setIsLoading = (isLoading) => {
+    this.setState((state) => {
+      return {
+        ...state,
+        isLoading,
+      };
+    });
+  };
+
+  async authorizeUser() {
+    this.setIsLoading(true);
+    try {
+      const user = await authService.authorizeUser();
+      this.setUser(user);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      this.setIsLoading(false);
+    }
+  }
+
+  onAuthorizeUser = ({ detail }) => {
+    this.setState(detail.user);
+  };
+
+  componentDidMount() {
+    this.authorizeUser();
+    eventEmmiter.on(APP_EVENTS.authorizeUser, this.onAuthorizeUser);
+  }
+
+  componentWilUnmount() {
+    eventEmmiter.off(APP_EVENTS.authorizeUser, this.onAuthorizeUser);
+  }
+
   render() {
     return `
+    <it-preloader is-loading="${this.state.isLoading}">
         <div class="main-layout">
-          <it-navigation></it-navigation>
+          <it-navigation user='${JSON.stringify(this.state.user)}'></it-navigation>
             <main>
               <app-router>
 
@@ -56,6 +114,24 @@ class App extends Component {
                   component="${routes.admin.component}">
                 </app-route>
 
+                <app-route 
+                  path="${routes.signUp.href}" 
+                  title="Sign Up" 
+                  component="${routes.signUp.component}">
+                </app-route>
+
+                <app-route 
+                  path="${routes.signIn.href}" 
+                  title="Sign In" 
+                  component="${routes.signIn.component}">
+                </app-route>
+
+                <app-route 
+                  path="${routes.signOut.href}" 
+                  title="Sign Out" 
+                  component="${routes.signOut.component}">
+                </app-route>
+
                 <app-route
                   path="${routes.error.href}" 
                   title="Error" 
@@ -69,6 +145,7 @@ class App extends Component {
             </main>
           <it-footer></it-footer>
         </div>
+        </it-preloader>
         `;
   }
 }

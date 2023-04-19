@@ -25,7 +25,7 @@ class AdminPage extends Component {
     this.setState((state) => {
       return {
         ...state,
-        isLoading: !state.isLoading,
+        isLoading,
       };
     });
   };

@@ -21,4 +21,16 @@ export const appPages = [
     label: 'Admin',
     href: APP_ROUTES.admin,
   },
+  {
+    label: 'Sign Up',
+    href: APP_ROUTES.signUp,
+  },
+  {
+    label: 'Sign In',
+    href: APP_ROUTES.signIn,
+  },
+  {
+    label: 'Sign Out',
+    href: APP_ROUTES.signOut,
+  },
 ];
