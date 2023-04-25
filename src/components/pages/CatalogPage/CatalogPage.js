@@ -11,6 +11,9 @@ import { CATEGORIES } from '../../../constants/categories';
 import { databaseService } from '../../../services/DatabaseService';
 import { FIRESTORE_KEYS } from '../../../constants/firestoreKeys';
 import '../../molecules/Slider';
+import { accordionItems, slides } from './constants';
+import './catalogPage.scss';
+import '../../molecules/Accordion';
 
 class CatalogPage extends Component {
   constructor() {
@@ -101,10 +104,15 @@ class CatalogPage extends Component {
     return `
       <catalog-controls categories='${JSON.stringify(CATEGORIES)}'></catalog-controls>
             <div class="container mt-5 pt-5 border-top">
-            <it-slider></it-slider>
-              <div class="row">
+            <it-slider slides='${JSON.stringify(slides)}'></it-slider>
+              <div class="row mt-5">
                 <div class="col-sm-3 border-end">
                   <it-weather></it-weather>
+                    <div class="mt-5">
+                      <it-accordion accordion-items='${JSON.stringify(
+                        accordionItems,
+                      )}'></it-accordion>
+                    </div>
                 </div>
                 <div class="col-sm-9">
                   <card-list products='${JSON.stringify(

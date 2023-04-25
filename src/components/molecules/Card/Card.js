@@ -16,11 +16,11 @@ class Card extends Component {
   };
 
   componentDidMount() {
-    this.addEventListener('click', this.addToCard);
+    this.addEventListener('click', this.addToCart);
   }
 
   componentWilUnmount() {
-    this.removeEventListener('click', this.addToCard);
+    this.removeEventListener('click', this.addToCart);
   }
 
   render() {
